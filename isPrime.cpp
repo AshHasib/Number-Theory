@@ -1,35 +1,31 @@
 #include<iostream>
 #include<cmath>
-//This code determines whether a given number is prime or not
 using namespace std;
 
-bool isPrime(int);
-int main() {
-    int N;
-    cin>>N;
+bool isPrime(int n) {//efficient prime determinant
+    int i;
+    if(n==1)return false;
+    if(n==2) return true;
+    if((n>2)&&(n%2==0)) return false;
 
-    if(isPrime(N)==true) {
-        cout<<"PRIME\n";
+    int root=sqrt(n);
+
+    for(i=3;i<=root;i=i+2) {
+        if(n%i==0) {
+            return false;
+        }
     }
-    else {
-        cout<<"NOT PRIME\n";
-    }
-    return 0;
+    return true;
 }
 
-bool isPrime(int n) {
-    if(n==1) return false;
-    else if(n==2) return true;
-    else if((n!=2) &&(n%2==0)) return false;
-    else {
-        int i,root;
-        root=sqrt(n);
-        for(i=3;i<=root;i=i+2) {
-            if(n%i==0) {
-                return false;
-                //break;
-            }
-        }
-        return true;
-    }
+int main() {
+    int N;
+    cout<<"input=";
+    cin>>N;
+    bool a=isPrime(N);
+
+    if(a==true) cout<<"PRIME\n";
+    else cout<<"NOT PRIME\n";
+
+    return 0;
 }

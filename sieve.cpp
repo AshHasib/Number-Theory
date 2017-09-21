@@ -1,43 +1,36 @@
 #include<bits/stdc++.h>
+
 using namespace std;
-//Implementation of Sieve of Eratosthenes
-//Sieve-prime generator
-//Efficiency - O(N.log(log(n)))
 
-int main () {
+void sieve(int n);
+
+int main (){
     int N;
-  cout<<"Enter limit:";
-    cin>>N;
-  
-    bool Pr[N+1];
+    printf("Enter limit:");
+    scanf("%d",&N);
+    sieve(N);
+    return 0;
+}
+
+void sieve(int n) {
+    bool Primes[n+1];
     int i,j;
-  
-    memset(Pr, true, N);
+    for(i=1;i<=n;i++) {
+        Primes[i]=true;
+    }
+    Primes[1]=false;
+    Primes[2]=true;
 
-    Pr[0]=false;
-    Pr[1]=false;
-
-    for(i=2;i<N;i++ ){
-        if(Pr[i]==true) {
-            for(j=2;i*j<=N;j++) {
-                Pr[i*j]=false;
+    for(i=2;i<=n;i++) {
+        if(Primes[i]==true) {
+            for(j=2;i*j<=n;j++) {
+                Primes[i*j]=false;
             }
         }
     }
-    vector <int> Primes;
-
-    for(i=0;i<N;i++) {
-        if(Pr[i]) {
-            Primes.push_back(i);
+    for(i=1;i<=n;i++) {
+        if(Primes[i]) {
+            printf("%d\t",i);
         }
     }
-    int counter=0;
-    for(i=0;i<Primes.size();i++) {
-        cout<<Primes[i] <<"\t";
-        counter++;
-        if(counter%5==0){
-            cout<<endl;
-        }
-    }
-    return 0;
 }

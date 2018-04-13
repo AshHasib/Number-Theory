@@ -50,6 +50,7 @@ int main()
     if(num%2!=0)
     {
         printf("Try an even number\n");
+        return 0;
     }
     int pos=0;
     int i=P[pos];

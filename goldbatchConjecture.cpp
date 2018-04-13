@@ -54,7 +54,7 @@ int main()
     int pos=0;
     int i=P[pos];
     bool flag=false;
-    while(i<num)
+    while(i<(num/2))
     {
         int temp=num-i;
 
